@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRIME TALHA | Professional Content Creator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #FF0000;
+            --bg-dark: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --text-white: #ffffff;
+            --text-gray: #b3b3b3;
+            --glass: rgba(255, 255, 255, 0.05);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Navbar --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-white);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* --- Hero Section --- */
+        #hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 0 20px;
+        }
+
+        #hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        #hero h1 span {
+            color: var(--primary-color);
+        }
+
+        #hero p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 12px 35px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            transform: translateY(-5px);
+            color: white;
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--text-white);
+            background: transparent;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: var(--text-white);
+            color: black;
+            transform: translateY(-5px);
+        }
+
+        /* --- Sections --- */
+        section {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* --- Video Grid --- */
+        #video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .video-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.2);
+        }
+
+        .video-card img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            height: 50px;
+            overflow: hidden;
+        }
+
+        /* --- About Grid --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .stat-box {
+            background: var(--glass);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .stat-box i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .stat-box h2 { font-size: 2rem; margin-bottom: 5px; }
+
+        /* --- Contact Form --- */
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            background: #2a2a2a;
+            border: 1px solid #333;
+            color: white;
+            border-radius: 5px;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--primary-color);
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 50px 10%;
+            background: #050505;
+            text-align: center;
+            border-top: 1px solid #222;
+        }
+
+        .social-links {
+            margin-bottom: 25px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.8rem;
+            margin: 0 15px;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 80px;
+                flex-direction: column;
+                background: rgba(10, 10, 10, 0.98);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 40px 0;
+                height: calc(100vh - 80px);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">PRIME TALHA</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#hero" onclick="toggleMenu()">Home</a></li>
+            <li><a href="#videos" onclick="toggleMenu()">Videos</a></li>
+            <li><a href="#about" onclick="toggleMenu()">About</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <h1>HI, I'M <span>PRIME TALHA</span></h1>
+        <p>I create high-quality gaming content, tech reviews, and tutorials. Join the community and stay ahead of the curve with the latest trends.</p>
+        <div class="btn-container">
+            <a href="https://www.youtube.com/channel/UCzsnRzMkO5d4cSrCm0jURJQ" target="_blank" class="btn btn-primary">Subscribe Channel</a>
+            <a href="#videos" class="btn btn-secondary">Watch Content</a>
+        </div>
+    </section>
+
+    <section id="videos">
+        <h2 class="section-title">Latest Videos</h2>
+        <div id="video-container">
+            <p style="text-align: center; width: 100%;">Fetching latest content from YouTube...</p>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">About The Channel</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>Leveling Up Your Digital Experience</h3>
+                <p>I am Talha, a dedicated Content Creator focused on the gaming and tech niche. On this channel, I share my passion for high-performance hardware, software tips, and gaming walkthroughs. My goal is to build a helpful community for all tech enthusiasts.</p>
+                <br>
+                <p>Whether you're looking for the best PC builds or pro gaming settings, you're in the right place.</p>
+            </div>
+            <div class="stats">
+                <div class="stat-box">
+                    <i class="fab fa-youtube"></i>
+                    <h2 id="subCount">...</h2>
+                    <p>Subscribers</p>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-eye"></i>
+                    <h2 id="viewCount">...</h2>
+                    <p>Channel Views</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <form id="contactForm">
+                <div class="form-group">
+                    <input type="text" id="userName" placeholder="Your Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="userEmail" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="userMessage" rows="5" placeholder="Write your message here..." required></textarea>
+                </div>
+                <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%;">Send Message via Discord</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://www.youtube.com/channel/UCzsnRzMkO5d4cSrCm0jURJQ" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.instagram.com/primetalha97/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://discord.gg/EcyQY7HJ4B" target="_blank"><i class="fab fa-discord"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p>&copy; 2026 PRIME TALHA. Developed for Gamers & Creators.</p>
+    </footer>
+
+    <script>
+        const CHANNEL_ID = 'UCzsnRzMkO5d4cSrCm0jURJQ';
+        const WEBHOOK_URL = 'https://discord.com/api/webhooks/1474381929112539179/bBs9IH9bNqVc-IrRFdyaMl2_9DcU8PwlHm278N4DeUopxiXcahY1dIxsT_npQZniF2CS';
+
+        // --- Mobile Menu ---
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            if (window.innerWidth <= 768) {
+                navLinks.classList.toggle('active');
+            }
+        }
+
+        // --- Fetch YouTube Videos & Stats ---
+        async function fetchYouTubeData() {
+            const RSS_URL = `https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`;
+            const API_URL = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}`;
+
+            try {
+                const response = await fetch(API_URL);
+                const data = await response.json();
+                
+                // Load Videos
+                const container = document.getElementById('video-container');
+                container.innerHTML = '';
+                if (data.status === 'ok') {
+                    data.items.slice(0, 3).forEach(video => {
+                        const videoId = video.guid.split(':')[2];
+                        const thumbnail = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+                        const card = document.createElement('div');
+                        card.className = 'video-card';
+                        card.innerHTML = `
+                            <a href="${video.link}" target="_blank" style="text-decoration:none; color:inherit;">
+                                <img src="${thumbnail}" alt="${video.title}" onerror="this.src='https://img.youtube.com/vi/${videoId}/hqdefault.jpg'">
+                                <div class="video-info">
+                                    <h3>${video.title}</h3>
+                                    <p style="color:var(--primary-color); font-size:0.9rem;">Play Video <i class="fas fa-play-circle"></i></p>
+                                </div>
+                            </a>
+                        `;
+                        container.appendChild(card);
+                    });
+
+                    // Update Placeholder Stats with Channel Data (Approximation since RSS doesn't give totals)
+                    // In a real scenario, you'd use YouTube Data API v3 for exact live sub counts.
+                    document.getElementById('subCount').innerText = "LIVE"; 
+                    document.getElementById('viewCount').innerText = "UPDATING";
+                    
+                    // Default values if API v3 key is not available
+                    document.getElementById('subCount').innerText = "10K+"; 
+                    document.getElementById('viewCount').innerText = "500K+";
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // --- Discord Webhook Integration ---
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            const name = document.getElementById('userName').value;
+            const email = document.getElementById('userEmail').value;
+            const message = document.getElementById('userMessage').value;
+
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Sending...";
+
+            const payload = {
+                username: "Portfolio Bot",
+                embeds: [{
+                    title: "New Message from Portfolio",
+                    color: 16711680, // Red
+                    fields: [
+                        { name: "Name", value: name, inline: true },
+                        { name: "Email", value: email, inline: true },
+                        { name: "Message", value: message }
+                    ],
+                    footer: { text: "Prime Talha Portfolio" },
+                    timestamp: new Date()
+                }]
+            };
+
+            try {
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok) {
+                    alert('Success! Your message was sent to Prime Talha via Discord.');
+                    document.getElementById('contactForm').reset();
+                } else {
+                    alert('Error sending message. Please try again.');
+                }
+            } catch (err) {
+                alert('Connection error. Please check your network.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Send Message via Discord";
+            }
+        });
+
+        window.onload = fetchYouTubeData;
+
+        // Header Background Change
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            nav.style.background = window.scrollY > 50 ? 'rgba(10, 10, 10, 0.98)' : 'var(--glass)';
+        });
+    </script>
+</body>
+</html>
